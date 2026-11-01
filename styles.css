@@ -1,0 +1,293 @@
+/* ---------- Colors and sizes (edit these to restyle the whole site) ---------- */
+:root {
+  --bg: #fbfaf8;
+  --surface: #ffffff;
+  --text: #1c1b1a;
+  --muted: #5c5955;
+  --border: #e4e0da;
+  --accent: #2f5bd3;
+  --accent-hover: #2349b0;
+  --on-accent: #ffffff;
+
+  --font: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  --radius: 12px;
+  --max-width: 46rem;
+  --header-height: 3.75rem;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #141414;
+    --surface: #1c1c1c;
+    --text: #ecebe8;
+    --muted: #a9a59f;
+    --border: #2e2e2e;
+    --accent: #8fb0ff;
+    --accent-hover: #b0c8ff;
+    --on-accent: #0f1630;
+  }
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  /* Keeps in-page links and keyboard focus from hiding under the sticky header */
+  scroll-padding-top: calc(var(--header-height) + 1rem);
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+h1,
+h2,
+h3 {
+  line-height: 1.2;
+  margin: 0 0 0.75rem;
+}
+
+p {
+  margin: 0 0 1rem;
+}
+
+a {
+  color: var(--accent);
+  text-underline-offset: 0.2em;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+:focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.container {
+  width: 100%;
+  max-width: var(--max-width);
+  margin-inline: auto;
+  padding-inline: 1.25rem;
+}
+
+/* ---------- Skip link (visible only when focused with the keyboard) ---------- */
+.skip-link {
+  position: absolute;
+  left: 1rem;
+  top: -100px;
+  z-index: 10;
+  padding: 0.5rem 1rem;
+  background: var(--accent);
+  color: var(--on-accent);
+  border-radius: var(--radius);
+}
+
+.skip-link:hover {
+  color: var(--on-accent);
+}
+
+.skip-link:focus {
+  top: 1rem;
+}
+
+/* ---------- Header ---------- */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+}
+
+.nav {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: var(--header-height);
+}
+
+.brand {
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.nav ul a {
+  color: var(--muted);
+  text-decoration: none;
+}
+
+.nav ul a:hover {
+  color: var(--text);
+  text-decoration: underline;
+}
+
+/* ---------- Sections ---------- */
+main > section {
+  padding-block: 3rem;
+  border-bottom: 1px solid var(--border);
+}
+
+main > section:last-child {
+  border-bottom: 0;
+}
+
+.hero {
+  padding-block: 5rem 3.5rem;
+}
+
+.eyebrow {
+  margin-bottom: 0.25rem;
+  color: var(--muted);
+  font-weight: 600;
+}
+
+h1 {
+  font-size: clamp(2.5rem, 8vw, 3.75rem);
+  letter-spacing: -0.02em;
+}
+
+h2 {
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.15rem;
+}
+
+.lead {
+  max-width: 36rem;
+  font-size: 1.2rem;
+  color: var(--muted);
+}
+
+/* ---------- Buttons ---------- */
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+}
+
+.button {
+  display: inline-block;
+  padding: 0.7rem 1.25rem;
+  border: 2px solid var(--accent);
+  border-radius: var(--radius);
+  background: var(--accent);
+  color: var(--on-accent);
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.button:hover {
+  background: var(--accent-hover);
+  border-color: var(--accent-hover);
+  color: var(--on-accent);
+}
+
+.button-secondary {
+  background: transparent;
+  color: var(--accent);
+}
+
+.button-secondary:hover {
+  background: transparent;
+  color: var(--accent-hover);
+}
+
+/* ---------- Project cards ---------- */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(13rem, 100%), 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  padding: 1.25rem;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.card p {
+  font-size: 0.975rem;
+}
+
+.card .tags {
+  margin: auto 0 0;
+  color: var(--muted);
+  font-size: 0.875rem;
+}
+
+/* ---------- Contact links ---------- */
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-weight: 600;
+}
+
+/* ---------- Footer ---------- */
+.site-footer {
+  padding-block: 2rem;
+  border-top: 1px solid var(--border);
+  color: var(--muted);
+  font-size: 0.9rem;
+}
+
+.site-footer p {
+  margin-bottom: 0;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 30rem) {
+  .nav ul {
+    gap: 0.9rem;
+  }
+
+  .hero {
+    padding-block: 3rem 2.5rem;
+  }
+}
